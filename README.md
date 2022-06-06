@@ -16,6 +16,11 @@ or
 ```
 py keylog.py
 ```
+May have to run:
+```python
+pip install pynput
+pip install datetime
+```
 And that's it!
 
 ###
