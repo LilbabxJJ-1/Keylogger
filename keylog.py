@@ -12,6 +12,7 @@ class Keylogger:
     def __init__(self):
         self.ll = ''
         self.poss_words = []
+        print('Running...')
 
     def __call__(self, key):
         if key == k.Key.media_next:  # Using the "media-next" button will stop the program
